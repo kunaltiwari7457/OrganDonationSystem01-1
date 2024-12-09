@@ -1,0 +1,54 @@
+.rf form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.rf label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.rf input[type="text"],
+.rf input[type="email"],
+.rf input[type="number"],
+.rf select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.rf input[type="radio"] {
+  margin-right: 5px;
+}
+
+.rf button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.rf button:hover {
+  background-color: #45a049;
+}
+
+.rf input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.rf p {
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #555;
+}

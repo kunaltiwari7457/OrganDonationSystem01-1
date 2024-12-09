@@ -1,0 +1,47 @@
+.graphic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+ .graphic-container  h1 {
+    font-size: 60px;
+    color: #FF1962;
+ }
+
+  .hands {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hand {
+    position: relative;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .left-hand,
+  .right-hand {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .heart {
+    font-size: 80px;
+    color: red;
+    margin: 0 20px;
+  }
+
+  .heart img{
+    width: 1000px;
+  }
+  
+  .floating-text {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 5px;
+    transform: rotate(-15deg);
+    color: #444;
+  }

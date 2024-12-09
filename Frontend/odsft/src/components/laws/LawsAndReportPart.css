@@ -1,0 +1,39 @@
+
+  .laws-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+
+    margin: 20px;
+  }
+  
+
+  .laws-content h2 {
+    font-size:20px;
+    margin: 20px 0;
+    padding-bottom: 10px;
+  }
+  
+  .laws-content p {
+    margin: 15px 0;
+    font-size: 1em;
+  }
+  s
+
+  .laws-content ul {
+    margin: 15px 0 20px 20px;
+    padding-left: 20px;
+  }
+  
+  .laws-content ul li {
+    margin: 10px 0;
+    line-height: 1.5;
+  }
+  
+  
+  .laws-content ul ul {
+    margin: 10px 0 20px 20px;
+    padding-left: 20px;
+  }
+  
+  

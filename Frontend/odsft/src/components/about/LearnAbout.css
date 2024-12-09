@@ -1,0 +1,41 @@
+/* LearnAbout.css */
+
+.accordion {
+   
+    width: 100%;
+    max-width: 1100px;
+    margin: 20px auto;
+   
+  }
+  
+
+  
+  .accordion-title {
+    padding: 15px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .accordion-title:hover {
+    background-color: #e1e1e1;
+  }
+  
+  .accordion-arrow {
+    font-size: 18px;
+    margin-left: 10px;
+  }
+  
+  .accordion-content {
+    padding: 15px;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    transition: max-height 0.2s ease;
+  }
+  
+  .accordion-content p {
+    margin: 0;
+  }

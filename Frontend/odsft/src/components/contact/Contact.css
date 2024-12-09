@@ -1,0 +1,119 @@
+.contact .container .content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.contact-left {
+    margin-left: 8%;
+}
+
+.contact-left h1 {
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+}
+
+.contact-list li {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.contact-list li h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+.contact-list li span {
+    color: #777;
+    margin-left: 40px;
+    text-align: justify;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.contact-list .item-title span {
+    text-align: center;
+}
+
+.contact-list li span a {
+    color: #777;
+}
+
+.contact-right {
+    margin-right: 7%;
+}
+
+.contact-right p {
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    margin-right: 400px;
+}
+
+
+
+.contact-form {
+    margin-top: 20px;
+}
+
+.first-row input,
+.second-row input,
+.third-row input,
+.fourth-row textarea {
+    border: none;
+    color: black;
+    background:#f4cdd9;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    border-radius: 3px;
+    font-weight: bold;
+    transition: 0.5s ease;
+    z-index: 999;
+}
+
+.fourth-row textarea {
+    width: 100%;
+}
+
+::placeholder {
+    color: #29072c;
+}
+
+.first-row input,
+.second-row input,
+.third-row input {
+    width: 100%;
+}
+
+.contact-form .btn {
+    margin-left: 27%;
+    border: none;
+    margin-top: 10px;
+    padding: 10px 40px;
+    cursor: pointer;
+    background-color: #FF1962;
+    color:aliceblue;
+    transition: 0.3s ease-in-out;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.contact-form .btn:hover {
+ 
+    transform: scale(1.02);
+    
+}
+
+.first-row input:hover,
+.second-row input:hover,
+.third-row input:hover,
+.fourth-row textarea:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+}

@@ -1,0 +1,78 @@
+/* General container styles */
+
+  
+  /* Main container for the Terms page */
+  .terms-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  /* Heading styles */
+  .terms-container h1 {
+    color:#fa3372;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .terms-container h2 {
+    color: #fa3372;
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+  
+  .terms-container h2:first-of-type {
+    margin-top: 0;
+  }
+  
+  /* Paragraph styles */
+  .terms-container p {
+    margin-bottom: 15px;
+    text-align: justify;
+  }
+  
+  /* List styles */
+  .terms-container ul {
+    margin-left: 20px;
+    list-style-type: disc;
+  }
+  
+  .terms-container ul li {
+    margin-bottom: 10px;
+    text-align: justify;
+  }
+  
+  /* Nested list styling */
+  .terms-container ul li ul {
+    list-style-type: circle;
+    margin-left: 20px;
+  }
+  
+  /* Strong emphasis styles */
+  .terms-container strong {
+    color: #000;
+    font-weight: bold;
+  }
+  
+  /* Links styling */
+  .terms-container a {
+    color: #3498db;
+    text-decoration: none;
+  }
+  
+  .terms-container a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Highlight important text */
+  .terms-container .highlight {
+    background-color: #eaf2f8;
+    padding: 10px;
+    border-left: 4px solid #3498db;
+    margin: 15px 0;
+  }
+  
