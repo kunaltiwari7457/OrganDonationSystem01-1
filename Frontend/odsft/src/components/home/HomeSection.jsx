@@ -9,9 +9,11 @@ function HomeSection() {
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
+  const [showAdminLoginModal, setShowAdminLoginModal] = useState(false);
 
   const toggleLoginModal = () => setShowLoginModal(!showLoginModal);
   const toggleSignupModal = () => setShowSignupModal(!showSignupModal);
+  const toggleAdminLoginModal = () => setShowAdminLoginModal(!showAdminLoginModal);
 
   const handleLearnClick = () => {
     navigate("/register");
@@ -68,6 +70,28 @@ function HomeSection() {
               <label>Password</label>
               <input type="password" placeholder="Enter your password" />
               <button type="submit">Login</button>
+            </form>
+            <button className="admin-login-button" onClick={toggleAdminLoginModal}>
+              Login as Admin
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Admin Login Modal */}
+      {showAdminLoginModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={toggleAdminLoginModal}>
+              &times;
+            </span>
+            <h2>Admin Login</h2>
+            <form>
+              <label>Admin ID</label>
+              <input type="text" placeholder="Enter your Admin ID" />
+              <label>Password</label>
+              <input type="password" placeholder="Enter your password" />
+              <button type="submit">Admin Login</button>
             </form>
           </div>
         </div>
