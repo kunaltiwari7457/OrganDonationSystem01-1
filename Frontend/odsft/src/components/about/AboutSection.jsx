@@ -6,11 +6,16 @@ import { useNavigate } from 'react-router-dom';
 const AboutSection = () => {
 
   const navigate2 = useNavigate();
-
+    
+  const navigate3 = useNavigate();
 
   const handleLearnClick = () => {
-    navigate2('/learn');
+    navigate2('/db'); // /learn 
   };
+
+  const handleBodyclick = () => {
+    navigate3('/bds');
+  }
 
 
   return (
@@ -88,7 +93,7 @@ const AboutSection = () => {
               Do you know that in India you can donate your whole body after death for medical research and education?
               Click below for information on organisations and medical institutions in your area where you can donate a body.
             </p>
-            <button className="details-btn">Details</button>
+            <button className="details-btn"   onClick={handleBodyclick} >Details</button>
           </div>
 
         </div>

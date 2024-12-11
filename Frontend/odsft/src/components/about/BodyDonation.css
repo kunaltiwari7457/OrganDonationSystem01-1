@@ -1,0 +1,40 @@
+.body-donation {
+
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .body-donation h1 {
+    color:#FF1962;
+    font-size: 35px;
+    margin-bottom: 10px;
+  }
+  
+  .body-donation h2 {
+    color:#FF1962;
+    font-size: 24px;
+    margin-top: 20px;
+  }
+  
+  .body-donation p {
+    color: #0c0c0c;
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .body-donation p:last-of-type {
+    margin-bottom: 0;
+  }
+  
+  .body-donation a {
+    color: #4d12ff;
+    text-decoration: none;
+  }
+  
+  .body-donation a:hover {
+    text-decoration: underline;
+  }
+  

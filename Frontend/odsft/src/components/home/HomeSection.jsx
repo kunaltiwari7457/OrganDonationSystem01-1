@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./HomeSection.css";
 import Slider from "../Slider/Slider";
-import { useNavigate } from "react-router-dom";
 import HeartGraphic from "./HeartGraphic";
 
 function HomeSection() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showAdminLoginModal, setShowAdminLoginModal] = useState(false);
+
+  
+  useEffect(() => {
+    if (location.state?.showLoginModal === true) {
+      setShowLoginModal(true);
+      
+      navigate(location.pathname, { replace: true });
+    }
+  }, [location.state, navigate]);
 
   const toggleLoginModal = () => setShowLoginModal(!showLoginModal);
   const toggleSignupModal = () => setShowSignupModal(!showSignupModal);
@@ -38,15 +48,17 @@ function HomeSection() {
         </button>
       </div>
 
+      {/* Informational Section */}
       <div className="info-section">
         <h3>Every organ donor has the potential to save up to 8 lives</h3>
-        <p><a href="/learn">Learn About Organ Donation</a></p>
+        <p>
+          <a href="/learn">Learn About Organ Donation</a>
+        </p>
       </div>
 
-      {/* Image Slider */}
       <Slider />
 
-      {/* Register Button */}
+      {/* Register Section */}
       <div className="register-section">
         <button className="register-button" onClick={handleLearnClick}>
           Register to Donate

@@ -1,0 +1,83 @@
+/* Blog Section Styles */
+ .blog-section {
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .blog-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+ .blog-section  .container  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+  /* Blog Grid Styles */
+   .blog-section .container   .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Blog Card Styles */
+  .blog-section  .container  .blog-card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .blog-section  .container  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Blog Image Styles */
+  .blog-section  .blog-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  /* Blog Content Styles */
+  .blog-section  .blog-content {
+    padding: 20px;
+  }
+  
+  .blog-section   .blog-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .blog-section   .blog-meta {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 15px;
+  }
+  
+  .blog-section   .blog-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /* Blog Description Box */
+  .blog-section   .blog-description-box {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  
