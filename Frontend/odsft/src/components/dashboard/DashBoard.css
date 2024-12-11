@@ -1,0 +1,96 @@
+
+  
+  .dashboard-container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 20%;
+    background-color: #6a1b9a;
+    color: white;
+    padding: 20px;
+  }
+  
+  .profile-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-image {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+  }
+  
+  .menu {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu li {
+    padding: 10px 0;
+    cursor: pointer;
+    border-bottom: 1px solid white;
+  }
+  
+  .main-content {
+    width: 80%;
+    padding: 20px;
+  }
+  
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card h4 {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .card p {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .card a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .card.blue {
+    background: #2196f3;
+    color: white;
+  }
+  
+  .card.green {
+    background: #4caf50;
+    color: white;
+  }
+  
+  .card.red {
+    background: #f44336;
+    color: white;
+  }
+  
+  .card.yellow {
+    background: #ffc107;
+    color: white;
+  }
+  
+  .card.purple {
+    background: #9c27b0;
+    color: white;
+  }
+  

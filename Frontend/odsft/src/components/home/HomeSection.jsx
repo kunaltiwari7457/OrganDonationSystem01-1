@@ -1,18 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import Slider from "../Slider/Slider"; // Assuming you have a Slider component
 import "./HomeSection.css";
-import { useNavigate } from "react-router-dom";
 
 function HomeSection() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignupModal, setShowSignupModal] = useState(false);
+  const [showAdminLoginModal, setShowAdminLoginModal] = useState(false);
+
+  useEffect(() => {
+    if (location.state?.showLoginModal === true) {
+      setShowLoginModal(true);
+      navigate(location.pathname, { replace: true });
+    }
+  }, [location.state, navigate]);
 
   const [loginData, setLoginData] = useState({ email: "", password: "" });
-  const [signupData, setSignupData] = useState({ email: "", password: "", confirmPassword: "" });
+  const [signupData, setSignupData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
   const toggleLoginModal = () => setShowLoginModal(!showLoginModal);
   const toggleSignupModal = () => setShowSignupModal(!showSignupModal);
+  const toggleAdminLoginModal = () => setShowAdminLoginModal(!showAdminLoginModal);
 
   const handleLearnClick = () => {
     navigate("/register");
@@ -28,41 +43,57 @@ function HomeSection() {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3300/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginData),
-    });
+    try {
+      const response = await fetch("http://localhost:3300/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
 
-    const result = await response.json();
-    alert(result.message);
-    if (result.message === "Login successful") {
-      setShowLoginModal(false);
+      const result = await response.json();
+      alert(result.message);
+
+      if (result.message === "Login successful") {
+        setShowLoginModal(false);
+        navigate("/db"); // Redirect to the dashboard after successful login
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred. Please try again.");
     }
   };
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3300/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(signupData),
-    });
+    try {
+      const response = await fetch("http://localhost:3300/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(signupData),
+      });
 
-    const result = await response.json();
-    alert(result.message);
-    if (result.message === "User signed up successfully") {
-      setShowSignupModal(false);
+      const result = await response.json();
+      alert(result.message);
+
+      if (result.message === "User signed up successfully") {
+        setShowSignupModal(false);
+      }
+    } catch (error) {
+      console.error("Error during signup:", error);
+      alert("An error occurred. Please try again.");
     }
+  };
+
+  const handleScrollDown = () => {
+    window.scrollBy(0, window.innerHeight);
   };
 
   return (
     <div className="App">
-      {/* Login and Sign Up Buttons */}
       <div className="auth-buttons">
         <button className="login-button" onClick={toggleLoginModal}>
           Login
@@ -72,7 +103,24 @@ function HomeSection() {
         </button>
       </div>
 
-      {/* Login Modal */}
+      <div className="info-section">
+        <h3>Every organ donor has the potential to save up to 8 lives</h3>
+        <p>
+          <a href="/learn">Learn About Organ Donation</a>
+        </p>
+      </div>
+
+      <Slider />
+
+      <div className="register-section">
+        <button className="register-button" onClick={handleLearnClick}>
+          Register to Donate
+        </button>
+        <div className="scroll-down" onClick={handleScrollDown}>
+          <span>❯</span>
+        </div>
+      </div>
+
       {showLoginModal && (
         <div className="modal">
           <div className="modal-content">
@@ -99,11 +147,31 @@ function HomeSection() {
               />
               <button type="submit">Login</button>
             </form>
+            <button className="admin-login-button" onClick={toggleAdminLoginModal}>
+              Login as Admin
+            </button>
           </div>
         </div>
       )}
 
-      {/* Sign Up Modal */}
+      {showAdminLoginModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={toggleAdminLoginModal}>
+              &times;
+            </span>
+            <h2>Admin Login</h2>
+            <form>
+              <label>Admin ID</label>
+              <input type="text" placeholder="Enter your Admin ID" />
+              <label>Password</label>
+              <input type="password" placeholder="Enter your password" />
+              <button type="submit">Admin Login</button>
+            </form>
+          </div>
+        </div>
+      )}
+
       {showSignupModal && (
         <div className="modal">
           <div className="modal-content">

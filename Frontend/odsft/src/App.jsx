@@ -16,6 +16,8 @@ import LearnAbout from './components/about/LearnAbout';
 import Synopsis from './components/laws/synopsis';
 import TermsAndCondition from './components/footer/TermsAndCondition';
 import PrivacyPolicy from './components/footer/PrivacyPolicy';
+import Dashboard from './components/dashboard/DashBoard';
+import BodyDonation from './components/about/BodyDonation';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -42,6 +44,7 @@ function App() {
           <Route path="/about" element={<AboutSection />} />
           <Route path="/learn" element={<LearnAbout />} />
           <Route path="/wwd" element={<Whatwedo />} />
+          <Route path="/bds" element={<BodyDonation />} />
           
           <Route path="/laws" element={<LawsAndReportPart />} />
           <Route path="/syno" element={<Synopsis />} />
@@ -54,6 +57,13 @@ function App() {
 
           <Route path="/termsandcondition" element={<TermsAndCondition />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+
+
+          <Route path="/db" element={<Dashboard />} />
+
+
+
+
         </Routes>
 
         <Footer />

@@ -11,7 +11,7 @@
     object-fit: cover; 
   }
   
-  .arrow {
+  .slider .arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -27,11 +27,11 @@
     z-index: 10;
   }
   
-  .arrow.prev {
+  .slider  .arrow.prev {
     left: 20px; 
   }
   
-  .arrow.next {
+  .slider  .arrow.next {
     right: 20px; 
   }
   
