@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Slider from "../Slider/Slider"; // Assuming you have a Slider component
@@ -11,19 +12,23 @@ function HomeSection() {
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showAdminLoginModal, setShowAdminLoginModal] = useState(false);
 
-  useEffect(() => {
-    if (location.state?.showLoginModal === true) {
-      setShowLoginModal(true);
-      navigate(location.pathname, { replace: true });
-    }
-  }, [location.state, navigate]);
-
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [signupData, setSignupData] = useState({
     email: "",
     password: "",
     confirmPassword: "",
   });
+  const [adminLoginData, setAdminLoginData] = useState({
+    adminId: "",
+    password: "",
+  });
+
+  useEffect(() => {
+    if (location.state?.showLoginModal === true) {
+      setShowLoginModal(true);
+      navigate(location.pathname, { replace: true });
+    }
+  }, [location.state, navigate]);
 
   const toggleLoginModal = () => setShowLoginModal(!showLoginModal);
   const toggleSignupModal = () => setShowSignupModal(!showSignupModal);
@@ -39,6 +44,10 @@ function HomeSection() {
 
   const handleSignupChange = (e) => {
     setSignupData({ ...signupData, [e.target.name]: e.target.value });
+  };
+
+  const handleAdminLoginChange = (e) => {
+    setAdminLoginData({ ...adminLoginData, [e.target.name]: e.target.value });
   };
 
   const handleLoginSubmit = async (e) => {
@@ -57,7 +66,7 @@ function HomeSection() {
 
       if (result.message === "Login successful") {
         setShowLoginModal(false);
-        navigate("/db"); // Redirect to the dashboard after successful login
+        
       }
     } catch (error) {
       console.error("Error during login:", error);
@@ -84,6 +93,31 @@ function HomeSection() {
       }
     } catch (error) {
       console.error("Error during signup:", error);
+      alert("An error occurred. Please try again.");
+    }
+  };
+
+  const handleAdminLoginSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3300/admin/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(adminLoginData),
+      });
+
+      const result = await response.json();
+      alert(result.message);
+
+      if (result.message === "Admin login successful") {
+        setShowAdminLoginModal(false);
+        navigate("./db");
+       
+      }
+    } catch (error) {
+      console.error("Error during admin login:", error);
       alert("An error occurred. Please try again.");
     }
   };
@@ -161,11 +195,23 @@ function HomeSection() {
               &times;
             </span>
             <h2>Admin Login</h2>
-            <form>
+            <form onSubmit={handleAdminLoginSubmit}>
               <label>Admin ID</label>
-              <input type="text" placeholder="Enter your Admin ID" />
+              <input
+                type="text"
+                name="adminId"
+                value={adminLoginData.adminId}
+                onChange={handleAdminLoginChange}
+                placeholder="Enter your Admin ID"
+              />
               <label>Password</label>
-              <input type="password" placeholder="Enter your password" />
+              <input
+                type="password"
+                name="password"
+                value={adminLoginData.password}
+                onChange={handleAdminLoginChange}
+                placeholder="Enter your password"
+              />
               <button type="submit">Admin Login</button>
             </form>
           </div>
