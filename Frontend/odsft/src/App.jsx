@@ -25,6 +25,7 @@ function App() {
   // Show the modal on page load
   useEffect(() => {
     setShowModal(true);
+    
   }, []);
 
   const closeModal = () => {

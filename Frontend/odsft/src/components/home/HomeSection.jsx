@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import Slider from "../Slider/Slider"; // Assuming you have a Slider component
 import "./HomeSection.css";
-import Slider from "../Slider/Slider";
-import HeartGraphic from "./HeartGraphic";
 
 function HomeSection() {
   const navigate = useNavigate();
@@ -12,14 +11,19 @@ function HomeSection() {
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [showAdminLoginModal, setShowAdminLoginModal] = useState(false);
 
-  
   useEffect(() => {
     if (location.state?.showLoginModal === true) {
       setShowLoginModal(true);
-      
       navigate(location.pathname, { replace: true });
     }
   }, [location.state, navigate]);
+
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const [signupData, setSignupData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
   const toggleLoginModal = () => setShowLoginModal(!showLoginModal);
   const toggleSignupModal = () => setShowSignupModal(!showSignupModal);
@@ -29,16 +33,67 @@ function HomeSection() {
     navigate("/register");
   };
 
-  const handleScrollDown = () => {
-    const targetSection = document.getElementById("heart-section");
-    if (targetSection) {
-      targetSection.scrollIntoView({ behavior: "smooth" });
+  const handleLoginChange = (e) => {
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+  };
+
+  const handleSignupChange = (e) => {
+    setSignupData({ ...signupData, [e.target.name]: e.target.value });
+  };
+
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3300/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
+
+      const result = await response.json();
+      alert(result.message);
+
+      if (result.message === "Login successful") {
+        setShowLoginModal(false);
+        navigate("/db"); // Redirect to the dashboard after successful login
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred. Please try again.");
     }
+  };
+
+  const handleSignupSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3300/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(signupData),
+      });
+
+      const result = await response.json();
+      alert(result.message);
+
+      if (result.message === "User signed up successfully") {
+        setShowSignupModal(false);
+      }
+    } catch (error) {
+      console.error("Error during signup:", error);
+      alert("An error occurred. Please try again.");
+    }
+  };
+
+  const handleScrollDown = () => {
+    window.scrollBy(0, window.innerHeight);
   };
 
   return (
     <div className="App">
-      {/* Login and Sign Up Buttons */}
       <div className="auth-buttons">
         <button className="login-button" onClick={toggleLoginModal}>
           Login
@@ -48,7 +103,6 @@ function HomeSection() {
         </button>
       </div>
 
-      {/* Informational Section */}
       <div className="info-section">
         <h3>Every organ donor has the potential to save up to 8 lives</h3>
         <p>
@@ -58,7 +112,6 @@ function HomeSection() {
 
       <Slider />
 
-      {/* Register Section */}
       <div className="register-section">
         <button className="register-button" onClick={handleLearnClick}>
           Register to Donate
@@ -68,7 +121,6 @@ function HomeSection() {
         </div>
       </div>
 
-      {/* Login Modal */}
       {showLoginModal && (
         <div className="modal">
           <div className="modal-content">
@@ -76,11 +128,23 @@ function HomeSection() {
               &times;
             </span>
             <h2>Login</h2>
-            <form>
+            <form onSubmit={handleLoginSubmit}>
               <label>Email</label>
-              <input type="email" placeholder="Enter your email" />
+              <input
+                type="email"
+                name="email"
+                value={loginData.email}
+                onChange={handleLoginChange}
+                placeholder="Enter your email"
+              />
               <label>Password</label>
-              <input type="password" placeholder="Enter your password" />
+              <input
+                type="password"
+                name="password"
+                value={loginData.password}
+                onChange={handleLoginChange}
+                placeholder="Enter your password"
+              />
               <button type="submit">Login</button>
             </form>
             <button className="admin-login-button" onClick={toggleAdminLoginModal}>
@@ -90,7 +154,6 @@ function HomeSection() {
         </div>
       )}
 
-      {/* Admin Login Modal */}
       {showAdminLoginModal && (
         <div className="modal">
           <div className="modal-content">
@@ -109,7 +172,6 @@ function HomeSection() {
         </div>
       )}
 
-      {/* Sign Up Modal */}
       {showSignupModal && (
         <div className="modal">
           <div className="modal-content">
@@ -117,23 +179,36 @@ function HomeSection() {
               &times;
             </span>
             <h2>Sign Up</h2>
-            <form>
+            <form onSubmit={handleSignupSubmit}>
               <label>Email</label>
-              <input type="email" placeholder="Enter your email" />
+              <input
+                type="email"
+                name="email"
+                value={signupData.email}
+                onChange={handleSignupChange}
+                placeholder="Enter your email"
+              />
               <label>Password</label>
-              <input type="password" placeholder="Enter your password" />
+              <input
+                type="password"
+                name="password"
+                value={signupData.password}
+                onChange={handleSignupChange}
+                placeholder="Enter your password"
+              />
               <label>Confirm Password</label>
-              <input type="password" placeholder="Confirm your password" />
+              <input
+                type="password"
+                name="confirmPassword"
+                value={signupData.confirmPassword}
+                onChange={handleSignupChange}
+                placeholder="Confirm your password"
+              />
               <button type="submit">Sign Up</button>
             </form>
           </div>
         </div>
       )}
-
-      {/* Heart Section */}
-      <div id="heart-section">
-        <HeartGraphic />
-      </div>
     </div>
   );
 }
